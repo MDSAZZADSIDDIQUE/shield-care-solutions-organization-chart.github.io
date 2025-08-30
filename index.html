@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Shield Care Solutions — Org Chart Portal Links</title>
+
+    <style>
+      :root {
+        --max-width: 1200px;
+        --ring-offset: 2px;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        line-height: 1.5;
+        color: #0f172a;
+        background: #f8fafc;
+      }
+      header,
+      footer {
+        text-align: center;
+        padding: 1rem;
+      }
+      .wrap {
+        margin-inline: auto;
+        max-width: var(--max-width);
+        padding: 1rem;
+      }
+
+      /* Keep the image and hotspots locked to the image’s native ratio (2048×1152). */
+      .chart {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 2048 / 1152; /* <- exact PNG ratio */
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 30px rgba(2, 6, 23, 0.08);
+        overflow: hidden;
+      }
+      .chart > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        user-select: none;
+        -webkit-user-drag: none;
+        pointer-events: none;
+      }
+
+      /* Hotspots = absolutely-positioned, percentage-based rectangles. */
+      .hotspot {
+        position: absolute;
+        left: var(--left);
+        top: var(--top);
+        width: var(--width);
+        height: var(--height);
+        border-radius: 8px;
+        background: transparent;
+        text-decoration: none;
+        outline: none;
+      }
+      .hotspot:hover {
+        box-shadow: inset 0 0 0 2px rgba(30, 64, 175, 0.55);
+        background: rgba(37, 99, 235, 0.08);
+        cursor: pointer;
+      }
+      .hotspot:focus-visible {
+        box-shadow: 0 0 0 var(--ring-offset) #fff,
+          0 0 0 calc(var(--ring-offset) + 2px) #1d4ed8;
+      }
+
+      /* Toggle-able overlay to see and adjust hotspots quickly. */
+      .chart.debug .hotspot {
+        background: rgba(16, 185, 129, 0.18);
+        outline: 1px dashed rgba(15, 118, 110, 0.75);
+      }
+
+      .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .toolbar {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        margin: 0.5rem 0 1rem;
+        color: #334155;
+      }
+      .toolbar input[type="checkbox"] {
+        transform: translateY(1px);
+      }
+      code.inline {
+        background: #e2e8f0;
+        padding: 0.15rem 0.35rem;
+        border-radius: 5px;
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wrap">
+      <h1 style="margin: 0; font-size: clamp(1.1rem, 1.6vw + 0.6rem, 1.6rem)">
+        Shield Care Solutions — Organization Chart
+      </h1>
+      <p style="margin: 0.25rem 0 0; color: #475569">
+        Click any department or role to open its portal.
+      </p>
+    </header>
+
+    <div class="wrap">
+      <div class="toolbar" aria-label="Utilities">
+        <label
+          ><input type="checkbox" id="toggleDebug" /> Show hotspots
+          (debug)</label
+        >
+        <span aria-hidden="true">|</span>
+        <span
+          >Update URLs in <code class="inline">linkMap</code> inside the
+          script.</span
+        >
+      </div>
+
+      <figure class="chart" id="chart">
+        <img
+          src="shield-care-solutions-organization-chart.png"
+          alt="Organization chart showing departments and roles"
+        />
+
+        <!-- ========= Orange Department Boxes (exact pixels → percentages) ========= -->
+        <a
+          class="hotspot"
+          style="
+            --left: 17.919921875%;
+            --top: 61.2847222222%;
+            --width: 10.400390625%;
+            --height: 7.3784722222%;
+          "
+          data-key="compliance"
+          aria-label="Compliance and Quality"
+          title="Open: Compliance & Quality"
+        ></a>
+
+        <a
+          class="hotspot"
+          style="
+            --left: 33.447265625%;
+            --top: 61.2847222222%;
+            --width: 10.44921875%;
+            --height: 7.2916666667%;
+          "
+          data-key="hr"
+          aria-label="HR — Administration and Recruitment"
+          title="Open: HR — Administration & Recruitment"
+        ></a>
+
+        <a
+          class="hotspot"
+          style="
+            --left: 45.3125%;
+            --top: 61.2847222222%;
+            --width: 10.302734375%;
+            --height: 7.2916666667%;
+          "
+          data-key="payroll"
+          aria-label="Payroll and Finance"
+          title="Open: Payroll & Finance"
+        ></a>
+
+        <a
+          class="hotspot"
+          style="
+            --left: 58.984375%;
+            --top: 61.2847222222%;
+            --width: 10.302734375%;
+            --height: 7.3784722222%;
+          "
+          data-key="scheduling"
+          aria-label="Scheduling and Workforce Coordination"
+          title="Open: Scheduling & Workforce Coordination"
+        ></a>
+
+        <a
+          class="hotspot"
+          style="
+            --left: 72.607421875%;
+            --top: 61.2847222222%;
+            --width: 10.400390625%;
+            --height: 7.2916666667%;
+          "
+          data-key="admin"
+          aria-label="Administration and Business Support"
+          title="Open: Administration & Business Support"
+        ></a>
+
+        <!-- ========= Mid Grey Cards (directly under orange boxes) ========= -->
+        <!-- Compliance → Compliance Officer (already included) -->
+        <a
+          class="hotspot"
+          style="
+            --left: 16.89453125%;
+            --top: 76.9097222222%;
+            --width: 5.419921875%;
+            --height: 7.3784722222%;
+          "
+          data-key="compliance-officer"
+          aria-label="Compliance Officer"
+          title="Open: Compliance Officer"
+        ></a>
+
+        <!-- HR → HR Administrator -->
+        <a
+          class="hotspot"
+          style="
+            --left: 32.763671875%;
+            --top: 76.8229166667%;
+            --width: 5.419921875%;
+            --height: 7.3784722222%;
+          "
+          data-key="hr-administrator"
+          aria-label="HR Administrator"
+          title="Open: HR Administrator"
+        ></a>
+
+        <!-- Payroll → Payroll Administrator -->
+        <a
+          class="hotspot"
+          style="
+            --left: 44.62890625%;
+            --top: 76.7361111111%;
+            --width: 4.931640625%;
+            --height: 7.4652777778%;
+          "
+          data-key="payroll-administrator"
+          aria-label="Payroll Administrator"
+          title="Open: Payroll Administrator"
+        ></a>
+
+        <!-- Scheduling → Rota Coordinator -->
+        <a
+          class="hotspot"
+          style="
+            --left: 57.2265625%;
+            --top: 76.7361111111%;
+            --width: 6.15234375%;
+            --height: 7.4652777778%;
+          "
+          data-key="rota-coordinator"
+          aria-label="Rota Coordinator"
+          title="Open: Rota Coordinator"
+        ></a>
+
+        <!-- Admin → Office Administrator -->
+        <a
+          class="hotspot"
+          style="
+            --left: 72.802734375%;
+            --top: 76.8229166667%;
+            --width: 5.17578125%;
+            --height: 7.3784722222%;
+          "
+          data-key="office-administrator"
+          aria-label="Office Administrator"
+          title="Open: Office Administrator"
+        ></a>
+
+        <!-- ========= Bottom Grey Cards (lowest row) ========= -->
+        <!-- Compliance → Quality Assurance Coordinator -->
+        <a
+          class="hotspot"
+          style="
+            --left: 16.943359375%;
+            --top: 88.9756944444%;
+            --width: 5.419921875%;
+            --height: 7.4652777778%;
+          "
+          data-key="quality-assurance-coordinator"
+          aria-label="Quality Assurance Coordinator"
+          title="Open: Quality Assurance Coordinator"
+        ></a>
+
+        <!-- HR → Recruitment Administrator -->
+        <a
+          class="hotspot"
+          style="
+            --left: 31.787109375%;
+            --top: 88.9756944444%;
+            --width: 6.0546875%;
+            --height: 7.3784722222%;
+          "
+          data-key="recruitment-administrator"
+          aria-label="Recruitment Administrator"
+          title="Open: Recruitment Administrator"
+        ></a>
+
+        <!-- Payroll → Accounts Assistant -->
+        <a
+          class="hotspot"
+          style="
+            --left: 44.140625%;
+            --top: 88.8888888889%;
+            --width: 5.46875%;
+            --height: 7.4652777778%;
+          "
+          data-key="accounts-assistant"
+          aria-label="Accounts Assistant"
+          title="Open: Accounts Assistant"
+        ></a>
+
+        <!-- Scheduling → Timesheet Administrator -->
+        <a
+          class="hotspot"
+          style="
+            --left: 57.568359375%;
+            --top: 88.8888888889%;
+            --width: 5.810546875%;
+            --height: 7.4652777778%;
+          "
+          data-key="timesheet-administrator"
+          aria-label="Timesheet Administrator"
+          title="Open: Timesheet Administrator"
+        ></a>
+
+        <!-- Admin → Receptionist Assistant -->
+        <a
+          class="hotspot"
+          style="
+            --left: 72.607421875%;
+            --top: 88.4548611111%;
+            --width: 5.37109375%;
+            --height: 7.3784722222%;
+          "
+          data-key="receptionist-assistant"
+          aria-label="Receptionist Assistant"
+          title="Open: Receptionist Assistant"
+        ></a>
+
+        <figcaption class="sr-only">
+          Portals available for Departments and Roles: Compliance & Quality
+          (Compliance Officer, Quality Assurance Coordinator), HR (HR
+          Administrator, Recruitment Administrator), Payroll (Payroll
+          Administrator, Accounts Assistant), Scheduling (Rota Coordinator,
+          Timesheet Administrator), and Administration (Office Administrator,
+          Receptionist Assistant).
+        </figcaption>
+      </figure>
+    </div>
+
+    <footer class="wrap">
+      <p style="color: #64748b; margin: 0.5rem 0 0">
+        Coordinates are fine-tuned for this exact PNG (2048×1152). Toggle
+        <em>Show hotspots (debug)</em> to visualize boxes and make
+        micro-adjustments if you swap the image.
+      </p>
+    </footer>
+
+    <script>
+      /* Central link map — edit destinations here */
+      const linkMap = {
+        /* Department portals */
+        compliance: "https://example.com/compliance",
+        hr: "https://example.com/hr",
+        payroll: "https://example.com/payroll",
+        scheduling: "https://example.com/scheduling",
+        admin: "https://example.com/admin",
+
+        /* Role portals */
+        "compliance-officer": "https://example.com/compliance-officer",
+        "quality-assurance-coordinator":
+          "https://example.com/quality-assurance-coordinator",
+        "hr-administrator": "https://example.com/hr-administrator",
+        "recruitment-administrator":
+          "https://example.com/recruitment-administrator",
+        "payroll-administrator": "https://example.com/payroll-administrator",
+        "accounts-assistant": "https://example.com/accounts-assistant",
+        "rota-coordinator": "https://example.com/rota-coordinator",
+        "timesheet-administrator":
+          "https://example.com/timesheet-administrator",
+        "office-administrator": "https://example.com/office-administrator",
+        "receptionist-assistant": "https://example.com/receptionist-assistant",
+      };
+
+      // Apply linkMap to anchors with data-key (keeps all URLs centralized)
+      document.querySelectorAll(".hotspot[data-key]").forEach((a) => {
+        const key = a.getAttribute("data-key");
+        if (linkMap[key]) a.href = linkMap[key];
+        a.target = "_self"; // change to '_blank' for new tab if preferred
+        a.rel = "noopener";
+        a.role = "link";
+      });
+
+      // Debug overlay toggle & keyboard shortcut (press "d")
+      const chartEl = document.getElementById("chart");
+      document
+        .getElementById("toggleDebug")
+        ?.addEventListener("change", (e) => {
+          chartEl.classList.toggle("debug", e.target.checked);
+        });
+      document.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() === "d") {
+          const box = document.getElementById("toggleDebug");
+          box.checked = !box.checked;
+          box.dispatchEvent(new Event("change"));
+        }
+      });
+    </script>
+  </body>
+</html>
